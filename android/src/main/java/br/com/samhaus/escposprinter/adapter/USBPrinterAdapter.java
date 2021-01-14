@@ -105,9 +105,11 @@ public class USBPrinterAdapter {
     public boolean selectDevice(Integer vendorId, Integer productId) {
 
         if(mUsbDevice == null) {
+            Log.v(LOG_TAG, "mUsbDevice is null");
             closeConnectionIfExists();
             List<UsbDevice> usbDevices = getDeviceList();
             for(UsbDevice usbDevice: usbDevices){
+                Log.v(LOG_TAG, "usbDevices on loop for device: vendor_id: " + usbDevice.getVendorId() + ", product_id: " + usbDevice.getProductId());
                 if((usbDevice.getVendorId() == vendorId) && (usbDevice.getProductId() == productId)){
                     Log.v(LOG_TAG, "Request for device: vendor_id: " + usbDevice.getVendorId() + ", product_id: " + usbDevice.getProductId());
                     closeConnectionIfExists();
