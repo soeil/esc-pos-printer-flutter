@@ -150,6 +150,7 @@ public class USBPrinterAdapter {
                         mEndPoint = ep;
                         mUsbInterface = usbInterface;
                         mUsbDeviceConnection = usbDeviceConnection;
+                        Log.e(LOG_TAG, "claimInterface");
                         return true;
                     }else{
                         usbDeviceConnection.close();
@@ -166,6 +167,7 @@ public class USBPrinterAdapter {
         final String printData = text;
         Log.v(LOG_TAG, "start to print text");
         boolean isConnected = openConnection();
+        Log.v(LOG_TAG, "Open Connection Status" + isConnected);
         if(isConnected) {
             Log.v(LOG_TAG, "Connected to device");
             new Thread(new Runnable() {
