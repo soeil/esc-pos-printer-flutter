@@ -19,6 +19,8 @@ class Escposprinter {
 
   static Future<bool> get closeConn async {
     final bool returned = await _channel.invokeMethod('closeConn');
+    _channel.invokeListMethod('connectPrinter');
+    print('returned $returned ${_channel.name}');
     return returned;
   }
 
