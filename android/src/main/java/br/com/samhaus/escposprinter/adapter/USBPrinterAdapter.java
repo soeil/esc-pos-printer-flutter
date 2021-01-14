@@ -179,11 +179,9 @@ public class USBPrinterAdapter {
                 }
             }).start();
             return true;
-        }else{
-            Log.v(LOG_TAG, "failed to connected to device");
-            return false;
         }
-        return isConnected;
+        Log.v(LOG_TAG, "failed to connected to device");
+        return false;
     }
 
     public boolean printRawData(String data) {
