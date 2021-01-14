@@ -65,6 +65,7 @@ public class USBPrinterAdapter {
                 if(mUsbDevice != null){
                     Toast.makeText(context, "USB device has been turned off", Toast.LENGTH_LONG).show();
                     closeConnectionIfExists();
+                    getDeviceList();
                 }
             }
         }
