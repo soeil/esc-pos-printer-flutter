@@ -83,11 +83,14 @@ public class USBPrinterAdapter {
 
     public void closeConnectionIfExists() {
         if(mUsbDeviceConnection != null) {
+            Log.v(LOG_TAG, "mUsbDeviceConnection is not empty");
             mUsbDeviceConnection.releaseInterface(mUsbInterface);
             mUsbDeviceConnection.close();
             mUsbInterface = null;
             mEndPoint = null;
             mUsbDeviceConnection = null;
+        } else {
+            Log.v(LOG_TAG, "mUsbDeviceConnection is ");
         }
     }
 
@@ -101,7 +104,7 @@ public class USBPrinterAdapter {
 
     public boolean selectDevice(Integer vendorId, Integer productId) {
 
-        if(mUsbDevice == null || mUsbDevice.getVendorId() != vendorId || mUsbDevice.getProductId()!= productId) {
+        if(mUsbDevice == null) {
             closeConnectionIfExists();
             List<UsbDevice> usbDevices = getDeviceList();
             for(UsbDevice usbDevice: usbDevices){
